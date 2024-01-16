@@ -1,6 +1,6 @@
 def main(students):
     #choice = input().split(' ')
-    choice = ["A:", "3"]
+    choice = ["G:", "3", "L"]
     print(choice)
     if choice[0] == "S:" or choice[0] == "Student:":
         if len(choice) > 2 and (choice[2] == "B" or choice[2] == "Bus"): 
@@ -74,23 +74,35 @@ def grade_high(students, number): # make it so students w/ same high GPA are all
         lookup.setdefault(grade[2], []).append(grade[:2] + grade[5:] + [grade[4]])
     if lookup.get(number) != None:
         high = lookup.get(number)[0]
+        highs = []
         for student in lookup.get(number):
             if student[2] > high[2]:
                 high = student
-        print(", ".join(high))
+        highs.append(high)
+        for student in lookup.get(number):
+            if student[0] != high[0] and student[2] == high[2]:
+                highs.append(student)
+        for student in highs:
+            print(", ".join(student))
     else: print(" ")
     return 0
-
+    
 def grade_low(students, number): # make it so students w/ same low GPA are all printed
     lookup = {}
     for grade in students:
         lookup.setdefault(grade[2], []).append(grade[:2] + grade[5:] + [grade[4]])
     if lookup.get(number) != None:
         low = lookup.get(number)[0]
+        lows = []
         for student in lookup.get(number):
             if student[2] < low[2]:
                 low = student
-        print(", ".join(low))
+        lows.append(low)
+        for student in lookup.get(number):
+            if student[0] != low[0] and student[2] == low[2]:
+                lows.append(student)
+        for student in lows:
+            print(", ".join(student))
     else: print(" ")
     return 0
 
