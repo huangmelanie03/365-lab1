@@ -131,6 +131,22 @@ def average(students, number):
     return 0
 
 def info(students):
+    # dictionary with grade as key
+    lookup = {}
+    for grade in students:
+        lookup.setdefault(grade[2], []).append(grade)
+    # create list of tuples with grade # and # of students in grade
+    info = []
+    for grade in lookup.keys():
+        number = 0
+        for student in lookup.get(grade): 
+            number += 1
+        info.append((grade, number))
+    # sort list by second value
+    info = sorted(info, key=lambda x:int(x[0]))
+    # print list
+    for grade in info: 
+        print(grade[0], ":", grade[1])
     return 0
 
 
