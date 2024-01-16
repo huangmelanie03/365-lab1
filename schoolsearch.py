@@ -1,26 +1,29 @@
 def main(students):
-    #choice = input().split(' ')
-    choice = ["G:", "3", "L"]
-    print(choice)
-    if choice[0] == "S:" or choice[0] == "Student:":
-        if len(choice) > 2 and (choice[2] == "B" or choice[2] == "Bus"): 
-            student_bus(students, choice[1])
-
-        else:
-            student(students, choice[1])
-    if choice[0] == "T:" or choice[0] == "Teacher:":
-        teacher(students, choice[1])
-    if choice[0] == "G:" or choice[0] == "Grade:":
-        if len(choice) > 2: 
-            if choice[2] == "H" or choice[2] == "High":
-                grade_high(students, choice[1])
-            else: grade_low(students, choice[1])
-        else: grade(students, choice[1])
-    if choice[0] == "B:" or choice[0] == "Bus:":
-        bus(students, choice[1])
-    if choice[0] == "A:" or choice[0] == "Average:":
-        average(students, choice[1])
-    return 0
+    while True:
+        print("What search would you like to make? ")
+        choice = input().split(' ')
+        if choice[0] == "S:" or choice[0] == "Student:":
+            if len(choice) > 2 and (choice[2] == "B" or choice[2] == "Bus"): 
+                student_bus(students, choice[1])
+            else:
+                student(students, choice[1])
+        if choice[0] == "T:" or choice[0] == "Teacher:":
+            teacher(students, choice[1])
+        if choice[0] == "G:" or choice[0] == "Grade:":
+            if len(choice) > 2: 
+                if choice[2] == "H" or choice[2] == "High":
+                    grade_high(students, choice[1])
+                else: grade_low(students, choice[1])
+            else: grade(students, choice[1])
+        if choice[0] == "B:" or choice[0] == "Bus:":
+            bus(students, choice[1])
+        if choice[0] == "A:" or choice[0] == "Average:":
+            average(students, choice[1])
+        if choice[0] == "I" or choice[0] == "Info":
+            info(students)
+        if choice[0] == "Q" or choice[0] == "Quit":
+            return 0
+        print("")
 
 
 def student(students, name):
@@ -42,7 +45,7 @@ def student_bus(students, name):
     if lookup.get(name) != None: 
         for student in lookup.get(name):
             student = [student[0]] + [student[3]]
-            print(name + ',' + ','.join(student))
+            print(name + ', ' + ', '.join(student))
     else: print(" ")
     return 0
 
@@ -86,7 +89,7 @@ def grade_high(students, number): # make it so students w/ same high GPA are all
             print(", ".join(student))
     else: print(" ")
     return 0
-    
+
 def grade_low(students, number): # make it so students w/ same low GPA are all printed
     lookup = {}
     for grade in students:
@@ -126,7 +129,7 @@ def average(students, number):
         for student in lookup.get(number):
             amount += 1
             total += float(student)
-        print(number, ', ', round(total/amount, 2))
+        print(str(number) + ', ' + str(round(total/amount, 2)))
     else: print(" ")
     return 0
 
@@ -146,7 +149,7 @@ def info(students):
     info = sorted(info, key=lambda x:int(x[0]))
     # print list
     for grade in info: 
-        print(grade[0], ":", grade[1])
+        print(str(grade[0]) + ": " + str(grade[1]))
     return 0
 
 
