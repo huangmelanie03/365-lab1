@@ -32,12 +32,11 @@ def student(students, name):
     lookup = {}
     for student in students: 
         lookup.setdefault(student[0], []).append(student[1:])
-    if not lookup.get(name): 
-        print("")
-        return 0
-    for student in lookup.get(name):
-        student = student[:3] + student[5:]
-        print(name + ',' + ','.join(student))
+    if lookup.get(name) != None: 
+        for student in lookup.get(name):
+            student = student[:3] + student[5:]
+            print(name + ',' + ','.join(student))
+    else: print("")
     return 0
 
 def student_bus(students, name):
@@ -47,8 +46,8 @@ def student_bus(students, name):
     if lookup.get(name) != None: 
         for student in lookup.get(name):
             student = [student[0]] + [student[3]]
-            print(name + ', ' + ', '.join(student))
-    else: print(" ")
+            print(name + ',' + ','.join(student))
+    else: print("")
     return 0
 
 def teacher(students, name):
@@ -57,9 +56,9 @@ def teacher(students, name):
         lookup.setdefault(teacher[6], []).append(teacher[:2])
     if lookup.get(name) != None:
         for student in lookup.get(name):
-            student = student[0] + ", " + student[1]
+            student = student[0] + "," + student[1]
             print(student)
-    else: print(" ")
+    else: print("")
     return 0
 
 def grade(students, number): 
@@ -68,9 +67,9 @@ def grade(students, number):
         lookup.setdefault(grade[2], []).append(grade[:2])
     if lookup.get(number) != None:
         for student in lookup.get(number):
-            student = student[0] + ", " + student[1]
+            student = student[0] + "," + student[1]
             print(student)
-    else: print(" ")
+    else: print("")
     return 0
 
 def grade_high(students, number): # make it so students w/ same high GPA are all printed
@@ -88,8 +87,8 @@ def grade_high(students, number): # make it so students w/ same high GPA are all
             if student[0] != high[0] and student[2] == high[2]:
                 highs.append(student)
         for student in highs:
-            print(", ".join(student))
-    else: print(" ")
+            print(",".join(student))
+    else: print("")
     return 0
 
 def grade_low(students, number): # make it so students w/ same low GPA are all printed
@@ -107,8 +106,8 @@ def grade_low(students, number): # make it so students w/ same low GPA are all p
             if student[0] != low[0] and student[2] == low[2]:
                 lows.append(student)
         for student in lows:
-            print(", ".join(student))
-    else: print(" ")
+            print(",".join(student))
+    else: print("")
     return 0
 
 def bus(students, number):
@@ -117,8 +116,8 @@ def bus(students, number):
         lookup.setdefault(bus[4], []).append(bus[:4])
     if lookup.get(number) != None:
         for student in lookup.get(number):
-            print(', '.join(student))
-    else: print(" ")
+            print(','.join(student))
+    else: print("")
     return 0
 
 def average(students, number):
@@ -132,7 +131,7 @@ def average(students, number):
             amount += 1
             total += float(student)
         print(str(number) + ', ' + str(round(total/amount, 2)))
-    else: print(" ")
+    else: print("")
     return 0
 
 def info(students):
@@ -187,6 +186,3 @@ if __name__ == "__main__":
             else: 
                 print("error with file")
                 exit()
-
-
-
