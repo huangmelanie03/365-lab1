@@ -22,7 +22,7 @@ def main(students):
         if choice[0] == "I" or choice[0] == "Info":
             info(students)
         if choice[0] == "Q" or choice[0] == "Quit":
-            return 0
+            exit()
         print("")
 
 
@@ -152,13 +152,36 @@ def info(students):
         print(str(grade[0]) + ": " + str(grade[1]))
     return 0
 
+def is_float(string):
+    try:
+        test1 = int(string)
+        return False
+    except ValueError: 
+        try: 
+            test = float(string)
+            return True
+        except ValueError: 
+            return False
 
 if __name__ == "__main__":
     with open("students.txt") as file: 
         lines = [line.strip().split(',') for line in file]
-        # for loop to go through lines and error check format
-       #print(lines)
-    
-    main(lines)
-
-
+        for line in lines:
+            if len(line) == 8:
+                last_name, first_name, grade, classroom, bus, gpa, t_last_name, t_first_name = line
+                if (grade.isdigit() == False) or int(grade) < 0 or int(grade) > 6:
+                    print("wrong grade")
+                    exit()
+                if (classroom.isdigit() == False):
+                    print("wrong classroom")
+                    exit()
+                if (bus.isdigit() == False):
+                    print("wrong bus")
+                    exit()
+                if (is_float(gpa) == False) or float(gpa) < 0 or float(gpa) > 6:
+                    print("wrong gpa")
+                    exit()
+                main(lines)
+            else: 
+                print("error with file")
+                exit()
