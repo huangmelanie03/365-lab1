@@ -1,0 +1,100 @@
+// CSC 365
+// Lab 1-a test suite
+
+// TC-1
+// Test Requirements R3, R4
+// short form command name, existing student
+// expected output: CORKER,CARTER,4,105,HANTZ,JED
+
+S: CORKER
+
+// TC-2
+// Test Requirements R3, R4
+// short form command name, non-existing student
+// expected output: <empty line>
+
+S: KO
+
+// TC-3
+// Test Requirements R3, R5
+// short form command name, existing same bus
+// expected output: COOKUS,XUAN,3,107
+//                  ELHADDAD,SHANTE,3,107
+//                  IMMERMAN,DEVIN,4,105
+//                  OBREIN,STAN,6,111
+//                  CORONADO,DIMPLE,6,102
+//                  SARAO,DIEDRA,2,108
+//                  EARLY,TORY,3,107
+//                  KEMERER,ROSETTA,6,102            
+
+S: 52
+
+// TC-4
+// Test Requirements R3, R5
+// short form command name, non-existing bus
+// expected output: <empty line>
+
+S: 20
+
+// TC-5
+// Test Requirements R3, R6
+// short form command name, existing teacher
+// expected output: COOKUS,XUAN
+//                  ELHADDAD,SHANTE
+//                  SWEDLUND,SHARRI
+//                  CIGANEK,MANIE
+//                  COVINGTON,TOMAS
+//                  EARLY,TORY
+//                  LINHART,LELA
+
+S: FAFARD
+
+// TC-6
+// Test Requirements R3, R6
+// short form command name, non-existing teacher
+// expected output: <empty line>
+
+S: WONG 
+
+// TC-7
+// Test Requirements R3, R7
+// short form command name, existing grade
+// expected output: 
+
+S: 6
+
+// TC-8
+// Test Requirements R3, R7
+// short form command name, non-existing grade
+// expected output: <empty line>
+
+S: 7
+
+// TC-9
+// Test Requirements R3, R8
+// short form command name, existing bus route
+// expected output: 
+
+S: 55
+
+// TC-10
+// Test Requirements R3, R8
+// short form command name, non-existing bus route
+// expected output: <empty line>
+
+S: 60
+
+// TC-11
+// Test Requirements R3, R9
+// short form command name, high gpa
+// expected output: LAMKIN,TAMA,3.23,NISTENDIRK,NANCY,55
+
+S: 6
+
+// TC-12
+// Test Requirements R3, R9
+// short form command name, low gpa
+// expected output: STERBACK,PETER,3.02,NISTENDIRK,NANCY,51
+
+S: 3
+
