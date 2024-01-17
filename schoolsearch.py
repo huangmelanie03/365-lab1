@@ -7,22 +7,24 @@ def main(students):
                 student_bus(students, choice[1])
             else:
                 student(students, choice[1])
-        if choice[0] == "T:" or choice[0] == "Teacher:":
+        elif choice[0] == "T:" or choice[0] == "Teacher:":
             teacher(students, choice[1])
-        if choice[0] == "G:" or choice[0] == "Grade:":
+        elif choice[0] == "G:" or choice[0] == "Grade:":
             if len(choice) > 2: 
                 if choice[2] == "H" or choice[2] == "High":
                     grade_high(students, choice[1])
                 else: grade_low(students, choice[1])
             else: grade(students, choice[1])
-        if choice[0] == "B:" or choice[0] == "Bus:":
+        elif choice[0] == "B:" or choice[0] == "Bus:":
             bus(students, choice[1])
-        if choice[0] == "A:" or choice[0] == "Average:":
+        elif choice[0] == "A:" or choice[0] == "Average:":
             average(students, choice[1])
-        if choice[0] == "I" or choice[0] == "Info":
+        elif choice[0] == "I" or choice[0] == "Info":
             info(students)
-        if choice[0] == "Q" or choice[0] == "Quit":
+        elif choice[0] == "Q" or choice[0] == "Quit":
             exit()
+        else: 
+            print("Search option not recognized")
         print("")
 
 
@@ -38,7 +40,7 @@ def student(students, name):
         print(name + ',' + ','.join(student))
     return 0
 
-def student_bus(students, name): 
+def student_bus(students, name):
     lookup = {}
     for student in students: 
         lookup.setdefault(student[0], []).append(student[1:])
@@ -168,14 +170,14 @@ if __name__ == "__main__":
         lines = [line.strip().split(',') for line in file]
         for line in lines:
             if len(line) == 8:
-                last_name, first_name, grade, classroom, bus, gpa, t_last_name, t_first_name = line
-                if (grade.isdigit() == False) or int(grade) < 0 or int(grade) > 6:
+                last_name, first_name, grade_num, classroom, bus_route, gpa, t_last_name, t_first_name = line
+                if (grade_num.isdigit() == False) or int(grade_num) < 0 or int(grade_num) > 6:
                     print("wrong grade")
                     exit()
                 if (classroom.isdigit() == False):
                     print("wrong classroom")
                     exit()
-                if (bus.isdigit() == False):
+                if (bus_route.isdigit() == False):
                     print("wrong bus")
                     exit()
                 if (is_float(gpa) == False) or float(gpa) < 0 or float(gpa) > 6:
@@ -185,3 +187,6 @@ if __name__ == "__main__":
             else: 
                 print("error with file")
                 exit()
+
+
+
