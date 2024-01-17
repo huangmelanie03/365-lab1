@@ -13,7 +13,10 @@ def main(students):
             if len(choice) > 2: 
                 if choice[2] == "H" or choice[2] == "High":
                     grade_high(students, choice[1])
-                else: grade_low(students, choice[1])
+                elif choice[2] == "L" or choice[2] == "Low": 
+                    grade_low(students, choice[1])
+                else: 
+                    continue
             else: grade(students, choice[1])
         elif choice[0] == "B:" or choice[0] == "Bus:":
             bus(students, choice[1])
